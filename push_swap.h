@@ -34,5 +34,6 @@ void		r(t_list **pile);
 void		r2(t_list **pile, t_list **stock);
 void		rr(t_list **pile);
 void		rr2(t_list **pile, t_list **stock);
+void		algorithme(t_list **a, t_list **b);
 
 #endif

@@ -47,13 +47,12 @@ void	free_list(t_list *pile)
 	}
 }
 
-void	doublon(char **argv, int argc)
+void	doublon(char **argv)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
+	i = 1;
 	while (argv[i])
 	{
 		j = i + 1;
@@ -76,7 +75,7 @@ void	verif(char **argv, int argc)
 	int	j;
 
 	j = 1;
-	doublon(argv, argc);
+	doublon(argv);
 	while (j < argc)
 	{
 		i = 0;

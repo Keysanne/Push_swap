@@ -61,6 +61,7 @@ int	main(int argc, char **argv)
 			return (-1);
 		b = NULL;
 		a = tab_to_list(a, &stock, argv, argc);
+		algorithme(&a, &b);
 		print_list(a);
 		print_list(b);
 		free_list(a);
