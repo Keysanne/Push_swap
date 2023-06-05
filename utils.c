@@ -25,6 +25,11 @@ long int	ft_atol(char *nptr)
 	{
 		if (nptr[i] == '-')
 			cpt = 1;
+		if (nptr[i + 1] == '\0')
+		{
+			write(1, "error\n", 6);
+			exit (0);
+		}
 		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
@@ -32,6 +37,21 @@ long int	ft_atol(char *nptr)
 	if (cpt == 1)
 		rst = -rst;
 	return (rst);
+}
+
+int	lst_size(t_list *b)
+{
+	int		x;
+	t_list	*swp;
+
+	swp = b;
+	x = 0;
+	while (swp)
+	{
+		swp = swp->next;
+		x++;
+	}
+	return (x);
 }
 
 void	free_list(t_list *pile)

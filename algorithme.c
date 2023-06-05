@@ -6,7 +6,7 @@
 /*   By: tbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:55:40 by tbatteux          #+#    #+#             */
-/*   Updated: 2023/06/02 15:08:03 by tbatteux         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:14:40 by tbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	trier(t_list *a)
 {
-	t_list	*test;
+	t_list		*test;
 	long int	valeur;
 
 	test = a;
@@ -28,9 +28,14 @@ int	trier(t_list *a)
 	return (0);
 }
 
-void	algorithme(t_list **a, t_list **b)
+void	algorithme(t_list **a, t_list **b, int taille)
 {
-	printf ("%d\n\n", trier(*a));
-	if (!(*b))
-		return ;
+	if (taille == 3)
+	{
+		algo_3(a);
+	}
+	else if (taille <= 6)
+	{
+		algo_6(a, b);
+	}
 }
