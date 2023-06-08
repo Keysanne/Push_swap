@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rr(t_list **pile)
+void	rra(t_list **pile)
 {
 	t_list	*swp;
 	t_list	*cell;
@@ -27,10 +27,29 @@ void	rr(t_list **pile)
 	swp->next = NULL;
 	cell->next = *pile;
 	*pile = cell;
+	write(1, "rra\n", 4);
 }
 
-void	rr2(t_list **pile, t_list **stock)
+void	rrb(t_list **pile)
 {
-	rr(pile);
-	rr(stock);
+	t_list	*swp;
+	t_list	*cell;
+
+	swp = *pile;
+	cell = (*pile)->next;
+	while (cell->next)
+	{
+		cell = cell->next;
+		swp = swp->next;
+	}
+	swp->next = NULL;
+	cell->next = *pile;
+	*pile = cell;
+	write(1, "rrb\n", 4);
+}
+
+void	rrr(t_list **pile, t_list **stock)
+{
+	rra(pile);
+	rrb(stock);
 }

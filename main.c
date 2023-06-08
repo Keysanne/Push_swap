@@ -28,6 +28,7 @@ t_list	*tab_to_list(t_list *pile, t_list *stock, char **argv, int argc)
 	t_list	*swp;
 
 	pile->data = ft_atol(argv[1]) + 2147483649;
+	free(argv[1]);
 	pile->next = NULL;
 	swp = pile;
 	x = 2;
@@ -37,6 +38,7 @@ t_list	*tab_to_list(t_list *pile, t_list *stock, char **argv, int argc)
 		if (!stock)
 			exit (0);
 		stock->data = ft_atol(argv[x]) + 2147483649;
+		free(argv[x]);
 		stock->next = NULL;
 		pile->next = stock;
 		pile = pile->next;
@@ -70,16 +72,6 @@ void	simplifier(char **argv)
 	}
 }
 
-void	print_list(t_list *pile)
-{
-	printf("-----------------------\n");
-	while (pile)
-	{
-		printf("%ld\n", pile->data);
-		pile = pile->next;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_list	*a;
@@ -98,9 +90,8 @@ int	main(int argc, char **argv)
 		b = NULL;
 		a = tab_to_list(a, &stock, argv, argc);
 		algorithme(&a, &b, argc - 1);
-		print_list(a);
-		print_list(b);
 		free_list(a);
+		free_list(b);
 	}
 	return (0);
 }

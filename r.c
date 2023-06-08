@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_p_and_r.c                                        :+:      :+:    :+:   */
+/*   r.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 13:56:21 by tbatteux          #+#    #+#             */
-/*   Updated: 2023/06/01 16:53:09 by tbatteux         ###   ########.fr       */
+/*   Created: 2023/06/08 13:38:05 by tbatteux          #+#    #+#             */
+/*   Updated: 2023/06/08 13:38:23 by tbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	s(t_list **pile)
-{
-	t_list	*swp;
-
-	swp = (*pile)->next;
-	(*pile)->next = swp->next;
-	swp->next = *pile;
-	*pile = swp;
-}
-
-void	s2(t_list **pile, t_list **stock)
-{
-	s(pile);
-	s(stock);
-}
-
-void	p(t_list **pile, t_list **stock)
-{
-	t_list	*swp;
-
-	swp = (*pile);
-	(*pile) = (*pile)->next;
-	swp->next = (*stock);
-	*stock = swp;
-}
-
-void	r(t_list **pile)
+void	ra(t_list **pile)
 {
 	t_list	*swp;
 	t_list	*cell;
@@ -50,10 +24,26 @@ void	r(t_list **pile)
 		swp = swp->next;
 	swp->next = cell;
 	cell->next = NULL;
+	write(1, "ra\n", 3);
 }
 
-void	r2(t_list **pile, t_list **stock)
+void	rb(t_list **pile)
 {
-	r(pile);
-	r(stock);
+	t_list	*swp;
+	t_list	*cell;
+
+	swp = *pile;
+	cell = *pile;
+	*pile = (*pile)->next;
+	while (swp->next)
+		swp = swp->next;
+	swp->next = cell;
+	cell->next = NULL;
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_list **pile, t_list **stock)
+{
+	ra(pile);
+	rb(stock);
 }

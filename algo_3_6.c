@@ -15,27 +15,16 @@
 void	tas_de_3(t_list **a, t_list **b)
 {
 	t_list	*last;
-	t_list	*suiv;
 
 	while (trier(*a) == 1 || (*b))
 	{
-		suiv = (*a)->next;
 		last = lst_last(*a);
 		if (last->data < 4)
-		{
-			rr(a);
-			write(1, "rra\n", 4);
-		}
-		else if (suiv->data < 4 && (*a)->data > 4)
-		{
-			r(a);
-			write(1, "ra\n", 3);
-		}
+			rra(a);
 		if ((*a)->data < 4)
-		{
-			p(a, b);
-			write(1, "pb\n", 3);
-		}
+			pb(a, b);
+		else
+			ra(a);
 		if (lst_size(*b) == 3)
 			break ;
 	}
@@ -78,12 +67,14 @@ void	cas_particulier(t_list *a, t_list *b)
 	while (last_b->next)
 		last_b = last_b->next;
 	if ((b->data > last_b->data && last_b->data > mid_b->data)
-		|| (last_b->data > b->data && b->data > mid_b->data))
+		|| (last_b->data > mid_b->data && mid_b->data > b->data))
 	{
 		if ((a->data > mid_a->data && mid_a->data > last_a->data)
 			|| (mid_a->data > last_a->data && last_a->data > a->data))
 		{
 			write(1, "rrr\nss\npa\npa\npa\n", 16);
+			free_list(a);
+			free_list(b);
 			exit (0);
 		}
 	}
@@ -94,8 +85,10 @@ void	algo_6(t_list **a, t_list **b)
 	tas_de_3(a, b);
 	if (trier(*a) == 0 && !(*b))
 		return ;
-	cas_particulier(*a, *b);
-	algo_3(a);
+	if ((*a)->next)
+		cas_particulier(*a, *b);
+	if ((*a)->next)
+		algo_3(a);
 	reverse_algo_3(*b);
 	write(1, "pa\npa\npa\n", 9);
 }
