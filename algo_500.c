@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_100.c                                         :+:      :+:    :+:   */
+/*   algo_500.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 14:43:32 by tbatteux          #+#    #+#             */
-/*   Updated: 2023/06/09 15:25:22 by tbatteux         ###   ########.fr       */
+/*   Created: 2023/06/09 15:33:06 by tbatteux          #+#    #+#             */
+/*   Updated: 2023/06/09 15:55:15 by tbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	premier_tri(t_list **a, t_list **b, int x)
+void	premier_tri_500(t_list **a, t_list **b, int x)
 {
 	t_list	*second;
 	t_list	*last;
 
-	x *= 25;
-	while (lst_size(*b) != 25)
+	x *= 50;
+	while (lst_size(*b) != 50)
 	{
 		second = (*a)->next;
 		last = lst_last(*a);
-		if ((*a)->data <= x && (*a)->data > x - 25)
+		if ((*a)->data <= x && (*a)->data > x - 50)
 			pb(a, b);
-		else if (last->data <= x && last->data > x - 25)
+		else if (last->data <= x && last->data > x - 50)
 		{
 			rra(a);
 			pb(a, b);
 		}
-		else if (second->data <= x && second->data > x - 25)
+		else if (second->data <= x && second->data > x - 50)
 		{
 			ra(a);
 			pb(a, b);
@@ -41,7 +41,7 @@ void	premier_tri(t_list **a, t_list **b, int x)
 		rb(b);
 }
 
-void	renvois(t_list **a, t_list **b)
+void	renvois_500(t_list **a, t_list **b)
 {
 	t_list	*second;
 	t_list	*last;
@@ -69,7 +69,7 @@ void	renvois(t_list **a, t_list **b)
 	}
 }
 
-void	algo_100(t_list **a, t_list **b)
+void	algo_500(t_list **a, t_list **b)
 {
 	int		x;
 	t_list	*last;
@@ -77,13 +77,13 @@ void	algo_100(t_list **a, t_list **b)
 	x = 1;
 	if (trier(*a) == 1)
 	{
-		while (x <= 4 && (*a)->next)
+		while (x <= 10 && (*a)->next)
 		{
-			premier_tri(a, b, x);
+			premier_tri_500(a, b, x);
 			pa(a, b);
 			pa(a, b);
 			ra(a);
-			renvois(a, b);
+			renvois_500(a, b);
 			x++;
 		}
 		last = lst_last(*a);

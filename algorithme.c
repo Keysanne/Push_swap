@@ -36,6 +36,8 @@ void	algorithme(t_list **a, t_list **b, int taille)
 		algo_3(a);
 	else if (taille <= 6)
 		algo_6(a, b);
-	else if (taille <= 100)
+	else if (taille == 100)
 		algo_100(a, b);
+	else if (taille == 500)
+		algo_500(a, b);
 }
