@@ -41,6 +41,27 @@ void	premier_tri_500(t_list **a, t_list **b, int x)
 		rb(b);
 }
 
+void	near_500(t_list **a, t_list **b)
+{
+	int		taille;
+	int		i;
+	t_list	*swp;
+
+	i = 0;
+	swp = *b;
+	while (swp->data != (*a)->data - 1)
+	{
+		i++;
+		swp = swp->next;
+	}
+	swp = *b;
+	taille = lst_size(*b);
+	if (i < taille / 2)
+		rb(b);
+	else
+		rrb(b);
+}
+
 void	renvois_500(t_list **a, t_list **b)
 {
 	t_list	*second;
@@ -65,7 +86,7 @@ void	renvois_500(t_list **a, t_list **b)
 			pa(a, b);
 		}
 		else
-			rb(b);
+			near_500(a, b);
 	}
 }
 

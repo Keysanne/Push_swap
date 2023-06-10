@@ -47,6 +47,7 @@ void		algo_6(t_list **a, t_list **b);
 void		algo_2(t_list **a);
 void		algo_100(t_list **a, t_list **b);
 void		algo_500(t_list **a, t_list **b);
+void		algo_reste(t_list **a, t_list **b, int taille);
 char		*ft_itoa(int n);
 
 #endif

@@ -40,4 +40,6 @@ void	algorithme(t_list **a, t_list **b, int taille)
 		algo_100(a, b);
 	else if (taille == 500)
 		algo_500(a, b);
+	else
+		algo_reste(a, b, taille);
 }

@@ -6,7 +6,7 @@
 /*   By: tbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:43:32 by tbatteux          #+#    #+#             */
-/*   Updated: 2023/06/09 15:25:22 by tbatteux         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:39:49 by tbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,27 @@ void	premier_tri(t_list **a, t_list **b, int x)
 		rb(b);
 }
 
+void	near_100(t_list **a, t_list **b)
+{
+	int		taille;
+	int		i;
+	t_list	*swp;
+
+	i = 0;
+	swp = *b;
+	while (swp->data != (*a)->data - 1)
+	{
+		i++;
+		swp = swp->next;
+	}
+	swp = *b;
+	taille = lst_size(*b);
+	if (i < taille / 2)
+		rb(b);
+	else
+		rrb(b);
+}
+
 void	renvois(t_list **a, t_list **b)
 {
 	t_list	*second;
@@ -65,7 +86,7 @@ void	renvois(t_list **a, t_list **b)
 			pa(a, b);
 		}
 		else
-			rb(b);
+			near_100(a, b);
 	}
 }
 
