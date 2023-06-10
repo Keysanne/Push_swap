@@ -27,7 +27,7 @@ long int	ft_atol(char *nptr)
 			cpt = 1;
 		if (nptr[i + 1] == '\0')
 		{
-			write(1, "error\n", 6);
+			write(1, "Error\n", 6);
 			exit (0);
 		}
 		i++;
@@ -80,7 +80,7 @@ void	doublon(char **argv)
 		{
 			if (ft_atol(argv[i]) == ft_atol(argv[j]))
 			{
-				write(1, "error\n", 6);
+				write(1, "Error\n", 6);
 				exit (0);
 			}
 			j++;
@@ -104,14 +104,14 @@ void	verif(char **argv, int argc)
 			if (argv[j][i] != '-' && argv[j][i] != '+'
 				&& !(argv[j][i] >= '0' && argv[j][i] <= '9'))
 			{
-				write(1, "error\n", 6);
+				write(1, "Error\n", 6);
 				exit (0);
 			}
 			i++;
 		}
 		if (ft_atol(argv[j]) > 2147483647 || ft_atol(argv[j]) < -2147483648)
 		{
-			write(1, "error\n", 6);
+			write(1, "Error\n", 6);
 			exit (0);
 		}
 		j++;

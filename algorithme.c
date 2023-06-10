@@ -30,6 +30,8 @@ int	trier(t_list *a)
 
 void	algorithme(t_list **a, t_list **b, int taille)
 {
+	if (trier(*a) == 0)
+		return ;
 	if (taille == 2)
 		algo_2(a);
 	else if (taille == 3)
